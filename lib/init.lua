@@ -7,5 +7,6 @@ M.inspect = utils.inspect
 
 M.Vec3 = require('lib.vec3')
 M.MinHeap = require('lib.heap')
+M.Bot = require('lib.bot')
 
 return M
