@@ -21,6 +21,25 @@ function Vec3.new(x, y, z)
    return obj
 end
 
+--- @param s string
+--- @return Vec3
+function Vec3.parse(s)
+   local x, y, z = s:match('%((-?%d+), (-?%d+), (-?%d+)%)')
+   if x == nil or y == nil or z == nil then
+      error(string.format("Could not parse Vec3 from string '%s'", s))
+   end
+
+   local xn = tonumber(x)
+   local yn = tonumber(y)
+   local zn = tonumber(z)
+
+   --- @cast xn integer
+   --- @cast yn integer
+   --- @cast zn integer
+
+   return Vec3.new(xn, yn, zn)
+end
+
 Vec3.ZERO = Vec3.new(0, 0, 0)
 Vec3.DOWN = Vec3.new(0, -1, 0)
 Vec3.UP = Vec3.new(0, 1, 0)
