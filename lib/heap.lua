@@ -1,19 +1,19 @@
 --- @param i number
 --- @return number
 local function parent(i)
-   return math.floor((i - 1) / 2) + 1
+   return math.ceil((i - 1) / 2)
 end
 
 --- @param i number
 --- @return number
 local function child_left(i)
-   return (i - 1) * 2 + 2
+   return i * 2
 end
 
 --- @param i number
 --- @return number
 local function child_right(i)
-   return (i - 1) * 2 + 3
+   return i * 2 + 1
 end
 
 --- @param heap MinHeap
@@ -45,9 +45,9 @@ end
 --- @param priority number
 --- @param value T
 function MinHeap:insert(priority, value)
-   local i = #self.__entries + 1
-   self.__entries[i] = { priority = priority, value = value }
+   table.insert(self.__entries, { priority = priority, value = value })
 
+   local i = #self.__entries
    while i > 1 and self.__entries[i].priority < self.__entries[parent(i)].priority do
       swap(self, i, parent(i))
       i = parent(i)
@@ -64,36 +64,26 @@ function MinHeap:pop()
    -- Swap last and first
    local value = self.__entries[1].value
    self.__entries[1] = self.__entries[#self.__entries]
-   table.remove(self.__entries, #self.__entries)
+   table.remove(self.__entries)
 
    -- Sift first down
    local i = 1
    while child_left(i) <= #self.__entries do
       local prio = self.__entries[i].priority
-      local left_prio = self.__entries[child_left(i)].priority
+      local li = child_left(i)
+      local ri = child_right(i)
+      local l = self.__entries[li]
+      local r = self.__entries[ri]
 
-      if child_right(i) <= #self.__entries then
-         local right_prio = self.__entries[child_right(i)].priority
-
-         if right_prio < left_prio then
-            if right_prio < prio then
-               swap(self, i, child_right(i))
-               i = child_right(i)
-               goto continue
-            else
-               return value
-            end
-         end
-      end
-
-      if left_prio < prio then
-         swap(self, i, child_left(i))
-         i = child_left(i)
+      if r ~= nil and r.priority < l.priority and r.priority < prio then
+         swap(self, i, ri)
+         i = ri
+      elseif l.priority < prio then
+         swap(self, i, li)
+         i = li
       else
-         return value
+         break
       end
-
-      ::continue::
    end
 
    return value

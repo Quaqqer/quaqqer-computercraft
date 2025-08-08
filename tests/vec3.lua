@@ -1,0 +1,12 @@
+local Vec3 = require('lib.vec3')
+
+local v0 = Vec3.new(0, 0, 0)
+assert(tostring(v0) == '(0, 0, 0)')
+v0 = v0 + Vec3.new(1, 2, 3)
+assert(tostring(v0) == '(1, 2, 3)')
+v0 = v0 + Vec3.new(1, 2, 3)
+assert(tostring(v0) == '(2, 4, 6)')
+assert(v0 == Vec3.new(2, 4, 6))
+assert(v0 ~= Vec3.new(1, 4, 6))
+assert(tostring(-v0) == '(-2, -4, -6)')
+assert(tostring(Vec3.new(0, 0, 0) - v0) == '(-2, -4, -6)')
