@@ -1,4 +1,4 @@
-local Vec3 = require('lib.vec3')
+local Vec3 = require('qlib.vec3')
 
 --- @class Bot
 --- @field __pos Vec3

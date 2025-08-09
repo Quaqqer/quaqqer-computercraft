@@ -1,4 +1,4 @@
-local lib = require('lib.init')
+local lib = require('qlib')
 
 local h = lib.MinHeap.new()
 

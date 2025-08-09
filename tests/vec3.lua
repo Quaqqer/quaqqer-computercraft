@@ -1,4 +1,4 @@
-local Vec3 = require('lib.vec3')
+local Vec3 = require('qlib.vec3')
 
 -- Test addition
 local v0 = Vec3.new(0, 0, 0)

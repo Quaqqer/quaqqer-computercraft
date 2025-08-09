@@ -1,7 +1,7 @@
 local M = {}
 
-local Vec3 = require('lib.vec3')
-local MinHeap = require('lib.heap')
+local Vec3 = require('qlib.vec3')
+local MinHeap = require('qlib.heap')
 
 --- @alias PathStep { type: "turn", dir: "left" | "right" } | { type: "forward" }
 

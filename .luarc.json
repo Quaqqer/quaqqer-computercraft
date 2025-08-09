@@ -1,0 +1,5 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "workspace.library": ["./misc/lua-libs/lua-ls-cc-tweaked/library", "./libs/"],
+  "runtime.version": "Lua 5.2"
+}

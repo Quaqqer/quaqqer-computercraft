@@ -1,7 +1,9 @@
-package.path = package.path .. ';../?.lua'
+package.path = package.path .. ';../libs/?.lua'
 
-local lib = require('lib.init')
+local lib = require('qlib')
 local Vec3 = lib.Vec3
 
 local bot = lib.Bot.new(Vec3.ZERO, Vec3.EAST)
 bot:dig_perimeter(3, 3, 3)
+
+-- vim: ft=lua

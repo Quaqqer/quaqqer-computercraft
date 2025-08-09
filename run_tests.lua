@@ -1,4 +1,4 @@
-package.path = package.path .. ';?.lua'
+package.path = package.path .. ';./libs/?.lua'
 
 --- @param mod string
 local function test_module(mod)
@@ -9,6 +9,7 @@ end
 local function run_tests()
    test_module('tests.heap')
    test_module('tests.vec3')
+   test_module('tests.qlib')
    print('Tests ok!')
 end
 
